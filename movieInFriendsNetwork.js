@@ -108,7 +108,7 @@ newFriend.addFriendsWith("Adriana Winkelman", "Gilmara Pimentel");
 newFriend.addFriendsWith("Gilmara Pimentel", "Ilda Neta");
 newFriend.addFriendsWith("Adriana Winkelman", "Ilda Neta");
 
-// getting the movies with highest likes within these friends' network
+// getting the movie with highest likes within these friends' network
 const popularMovie = newFriend.getMovieWithHighestLikesAmongFriends();
 console.log(popularMovie);
 
