@@ -1,3 +1,4 @@
+
 const SocialNetworkGraph = require("../movieInFriendsNetwork");
 const newFriend = new SocialNetworkGraph();  
 
@@ -16,4 +17,15 @@ test("addFriendsWith should be a function", function(){
 
 test("getMovieWithHighestLikesAmongFriends should be a function", function(){
     expect(typeof newFriend.getMovieWithHighestLikesAmongFriends).toBe("function");
-})
+});
+
+// test("addFriend() is called with arguments", function(){
+//     //Preparing a Spy for newFriend.addFriend() method 
+//     const newFriendSpy = jest.spyOn(newFriend, "addFriend");
+
+//     //Creating a mock rule for use as a function argument;
+//     const trueRule = jest.fn(()=>true);
+//     expect(newFriendSpy).toHaveBeenCalled("value", ["true"]);
+//     setRuleSpy.mockClear();
+
+// })
