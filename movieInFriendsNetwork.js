@@ -88,6 +88,29 @@ class SocialNetworkGraph {
       movieName: mostPopularMovie,
     };
   }
+  depthFirstSearchOnFriends_RecursivelyMode(startingFriend) {
+    let checkedFriend = {};
+    const moviesList = [];
+    const friendsList = this.friendsList;
+
+    checkedFriend[startingFriend] = "Yes";
+
+    (function initiateSearch(friend) {
+      friendsList[friend].forEach((item) => {
+        if (item.movies) {
+          item.movies.forEach((movie) => {
+            moviesList.push(movie);
+          });
+        }
+
+        if (!checkedFriend[friend]) {
+          checkedFriend[friend] = "Yes";
+        }
+      });
+    })(startingFriend);
+
+    return moviesList;
+  }
 }
 
 const newFriend = new SocialNetworkGraph();
