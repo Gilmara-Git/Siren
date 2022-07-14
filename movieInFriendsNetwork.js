@@ -77,15 +77,18 @@ class SocialNetworkGraph {
   getMovieWithHighestLikesAmongFriends() {
     let highestLikes = 0;
     let mostPopularMovie = "";
+    let friendNetwork = "";
     this.totalMoviesList.forEach((movie) => {
       if (movie.likes > highestLikes) {
         highestLikes = movie.likes;
         mostPopularMovie = movie.title;
+        friendNetwork = movie.friendNetwork;
       }
     });
     return {
       TopMovie: highestLikes,
       movieName: mostPopularMovie,
+      friendNetwork
     };
   }
   depthFirstSearchOnFriends_RecursivelyMode(startingFriend) {
@@ -133,43 +136,63 @@ newFriend.addFriendsWith("Adriana Winkelman", "Ilda Neta");
 
 // getting the movie with highest likes within these friends' network
 const popularMovie = newFriend.getMovieWithHighestLikesAmongFriends();
-console.log(popularMovie);
+console.log("Return originated from getMovieWithHighestLikesAmongFriends", popularMovie);
 
-const lauraMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Laura Silva");
-const jackieMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Jackie Lima");
-const maryMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Mary Duarte");
-const ildaMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Ilda Neta");
-const gilmaraMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Gilmara Pimentel");
-const adrianaMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Adriana Winkelman");
+const lauraMovies =
+  newFriend.depthFirstSearchOnFriends_RecursivelyMode("Laura Silva");
+const jackieMovies =
+  newFriend.depthFirstSearchOnFriends_RecursivelyMode("Jackie Lima");
+const maryMovies =
+  newFriend.depthFirstSearchOnFriends_RecursivelyMode("Mary Duarte");
+const ildaMovies =
+  newFriend.depthFirstSearchOnFriends_RecursivelyMode("Ilda Neta");
+const gilmaraMovies =
+  newFriend.depthFirstSearchOnFriends_RecursivelyMode("Gilmara Pimentel");
+const adrianaMovies =
+  newFriend.depthFirstSearchOnFriends_RecursivelyMode("Adriana Winkelman");
 
-function allMovies(personMoviesList){ 
+function allMovies(personMoviesList) {
   let highestLikes = 0;
   let movieName = "";
   let friendName = "";
 
- personMoviesList.forEach(item => {
-    if(item.likes > highestLikes){
+  personMoviesList.forEach((item) => {
+    if (item.likes > highestLikes) {
       highestLikes = item.likes;
       movieName = item.title;
-      friendName = item.friendNetwork;  
-    }}
-                     
- )
+      friendName = item.friendNetwork;
+    }
+  });
 
-   return { 
-      title: movieName,
-      likes: highestLikes,
-      friendNetwork: friendName    
-  }
+  return {
+    title: movieName,
+    likes: highestLikes,
+    friendNetwork: friendName,
+  };
+}
 
-  }
-  
-  const lauraTopMovie = allMovies(lauraMovies);
-  const jackieTopMovie = allMovies(jackieMovies);
-  const maryTopMovie = allMovies(maryMovies);
-  const ildaTopMovie = allMovies(ildaMovies);
-  const gilmaraTopMovie = allMovies(gilmaraMovies);
-  const adrianaTopMovie = allMovies(adrianaMovies);
-  
+const lauraTopMovie = allMovies(lauraMovies);
+const jackieTopMovie = allMovies(jackieMovies);
+const maryTopMovie = allMovies(maryMovies);
+const ildaTopMovie = allMovies(ildaMovies);
+const gilmaraTopMovie = allMovies(gilmaraMovies);
+const adrianaTopMovie = allMovies(adrianaMovies);
+
+const listOfTopMovies = [];
+listOfTopMovies.push(
+  lauraTopMovie,
+  jackieTopMovie,
+  maryTopMovie,
+  ildaTopMovie,
+  gilmaraTopMovie,
+  adrianaTopMovie
+);
+
+function findTopMovie(allTopMoviesPerPerson) {
+  return allMovies(allTopMoviesPerPerson);
+}
+
+const mostLikedMovie = findTopMovie(listOfTopMovies);
+console.log("Return originated from the depth first search", mostLikedMovie);
 
 module.exports = SocialNetworkGraph;
