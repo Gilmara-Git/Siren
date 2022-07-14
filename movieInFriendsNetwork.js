@@ -135,4 +135,41 @@ newFriend.addFriendsWith("Adriana Winkelman", "Ilda Neta");
 const popularMovie = newFriend.getMovieWithHighestLikesAmongFriends();
 console.log(popularMovie);
 
+const lauraMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Laura Silva");
+const jackieMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Jackie Lima");
+const maryMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Mary Duarte");
+const ildaMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Ilda Neta");
+const gilmaraMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Gilmara Pimentel");
+const adrianaMovies = newFriend.depthFirstSearchOnFriends_RecursivelyMode("Adriana Winkelman");
+
+function allMovies(personMoviesList){ 
+  let highestLikes = 0;
+  let movieName = "";
+  let friendName = "";
+
+ personMoviesList.forEach(item => {
+    if(item.likes > highestLikes){
+      highestLikes = item.likes;
+      movieName = item.title;
+      friendName = item.friendNetwork;  
+    }}
+                     
+ )
+
+   return { 
+      title: movieName,
+      likes: highestLikes,
+      friendNetwork: friendName    
+  }
+
+  }
+  
+  const lauraTopMovie = allMovies(lauraMovies);
+  const jackieTopMovie = allMovies(jackieMovies);
+  const maryTopMovie = allMovies(maryMovies);
+  const ildaTopMovie = allMovies(ildaMovies);
+  const gilmaraTopMovie = allMovies(gilmaraMovies);
+  const adrianaTopMovie = allMovies(adrianaMovies);
+  
+
 module.exports = SocialNetworkGraph;
